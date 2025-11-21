@@ -25,3 +25,21 @@ def char_counts(text: str) -> dict:
     for ch in text.lower():
         counts[ch] = counts.get(ch, 0) + 1
     return counts
+
+
+def sorted_char_list(char_dict: dict) -> list:
+    """Convert a char->count dict into a sorted list of {'char': c, 'num': n}.
+
+    Only alphabetical characters are included (checked with `str.isalpha()`).
+    The returned list is sorted in-place from greatest to least by the
+    `num` value using the `.sort()` method and a small helper function.
+    """
+    # Build list of dicts for alphabetic characters only
+    items = [ {"char": ch, "num": cnt} for ch, cnt in char_dict.items() if ch.isalpha() ]
+
+    def _get_num(d: dict) -> int:
+        return d["num"]
+
+    # Sort in-place from greatest to least
+    items.sort(key=_get_num, reverse=True)
+    return items
