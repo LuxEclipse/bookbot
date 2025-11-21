@@ -10,7 +10,7 @@ def get_book_text(filepath: str) -> str:
 	with open(filepath, "r", encoding="utf-8") as f:
 		return f.read()
 
-from stats import count_words
+from stats import count_words, char_counts
 
 
 def main() -> None:
@@ -19,6 +19,9 @@ def main() -> None:
 	text = get_book_text(path)
 	num_words = count_words(text)
 	print(f"Found {num_words} total words")
+	# Compute and print character frequency dictionary (lowercased)
+	chars = char_counts(text)
+	print(chars)
 
 
 if __name__ == "__main__":
