@@ -10,13 +10,7 @@ def get_book_text(filepath: str) -> str:
 	with open(filepath, "r", encoding="utf-8") as f:
 		return f.read()
 
-
-def count_words(text: str) -> int:
-	"""Return the number of words in `text`.
-
-	Words are identified by splitting on whitespace (Python's str.split()).
-	"""
-	return len(text.split())
+from stats import count_words
 
 
 def main() -> None:
